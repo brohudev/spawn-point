@@ -1,7 +1,7 @@
 ### Phase 1: (till 2/21)
 #### wednesday:
 - [ ] Define script architecture
-	- [ ] Base installer that detects OS
+	- [x] Base installer that detects OS
 	- [ ] Modular components for each tech stack
 	- [ ] Configuration file format
 - [ ] List core dependencies for Fedora full-stack setup
