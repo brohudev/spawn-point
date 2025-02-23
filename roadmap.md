@@ -2,7 +2,7 @@
 #### wednesday:
 - [ ] Define script architecture
 	- [x] Base installer that detects OS
-	- [ ] Modular components for each tech stack
+	- [x] Modular components for each tech stack
 	- [ ] Configuration file format
 - [ ] List core dependencies for Fedora full-stack setup
 	- [ ] Node.js, pnpm, Git, VS Code
