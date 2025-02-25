@@ -1,10 +1,11 @@
 from fastapi import FastAPI
+from fastapi.responses import PlainTextResponse
 from handlers.fullstack import handle_fullstack
 
 app = FastAPI()
 
 
-@app.get("/fullstack")
+@app.get("/fullstack", response_class=PlainTextResponse)
 def get_fullstack():
     return handle_fullstack()
 
