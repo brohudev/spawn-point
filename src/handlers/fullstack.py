@@ -1,3 +1,5 @@
+from utils import validate_os
+
 # todo: turn this into an actual function (and seperate out the os verification to a seperate utility down the line)
 def handle_fullstack():
     return """#!/usr/bin/env python
