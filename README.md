@@ -1,46 +1,52 @@
-# 🚀 Spawn Point 
+# Spawnpoint
 
-*Zero-config hackathon jumpstarter - curl, run, get to coding!*
+**Frontend**: Astro + Tailwind CSS (Hosted on Cloudflare Pages)  
+**Backend**: Flask (Hosted on Render)  
 
-> **⚠️ Under Active Construction**  
-> Currently **only works on my machine** 
+## 🚀 Quick Start
 
-
-## 🕹️ Quick Start (Fedora 41)
-```bash
-curl -sSL spawnpoint.hitarth.dev | python3 - --web # add more flags or setup live!
+### Frontend Setup
 ```
-*...and watch your dev environment materialize ✨*
+cd frontend
+npm install
+npm run dev
+```
 
-## 🌟 What's Inside?
-- ✅ **Auto-installs** git/docker/node/python  
-- 🗂️ **Scaffolds** web/cli project skeletons  
-- ⚙️ **Configures** linters/gitignore/license  
-- 🧪 **Validates** everything actually works  
-
-## 🗺️ Roadmap 2025
-- 🐧 Fedora 40/39 (and wider linux support soon) (Feb)  
-- 🍎 macOS (March)  
-- 🪟 Windows/Winget (April)  
-
-## 👥 Wanna Help? 
-
-# Clone & local setup:
-
-```bash
-gh repo clone brohudev/spawnpoint
-cd spawnpoint
-python3 -m venv .venv && source .venv/bin/activate
+### Backend Setup
+```
+cd backend
+python -m venv .venv
+source .venv/bin/activate
 pip install -r requirements.txt
-python3 spawn.py --dev
+flask run
 ```
 
-### License:
- **MIT** (do whatever, just don't sue me)  
+## 🌐 Deployment
 
---- 
+### Frontend (Cloudflare)
+1. Connect GitHub repo to Cloudflare Pages
+2. Set build command: `npm run build`
+3. Set output directory: `dist`
 
-*Born at 🏫 hackathons, raised through all-nighters.  
-Final goal: `your-os-here.spawnpoint.hitarth.dev` mirror network.*  
+### Backend (Render)
+1. Create new Web Service
+2. Link GitHub repo
+3. Use Render's Python environment
+4. Set env vars from `.env.example`
 
-**⚠️ Warning**: This might eat your pet container. Use cautiously!
+## 🔧 Environment Variables
+`.env.example`:
+```
+# Frontend
+PUBLIC_API_URL="https://your-render-service.onrender.com"
+
+# Backend
+DATABASE_URL="postgresql://user:pass@localhost/hackdb"
+SECRET_KEY="your-secure-key"
+```
+
+## 📦 Included Features
+- Pre-configured CORS
+- SQLAlchemy ORM boilerplate
+- Tailwind + Rose Pine theme
+- CI/CD templates for GitHub Actions
