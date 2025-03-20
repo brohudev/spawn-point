@@ -10,7 +10,7 @@
 
 - [x] Frontend foundation
   - [x] Initialize Astro project
-  - [ ] Configure Tailwind CSS with Rose Pine theme
+  - [x] Configure Tailwind CSS with Rose Pine theme
   - [ ] Create basic layout components
   - [ ] Setup TypeScript configuration
   - [ ] Configure build process for Cloudflare Pages
