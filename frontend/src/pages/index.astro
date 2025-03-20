@@ -18,7 +18,7 @@ import Layout from '../layouts/Layout.astro';
           Run this command in your terminal to set up your project instantly.
         </p>
         <div class="bg-rosePine-surface p-4 rounded-md text-rosePine-text font-mono text-sm mb-4 overflow-x-auto whitespace-nowrap w-[90vw] md:w-auto" id="command-output">
-          curl https://spwnpt.dev/gen | python -
+          curl https://gen.spwnpt.dev | python -
         </div>
         <button id="copy-button" class="bg-rosePine-pine hover:bg-rosePine-iris hover:text-rosePine-base text-rosePine-text my-2 px-4 py-2 rounded-md font-medium transition-colors w-80">
           Copy to Clipboard
@@ -165,7 +165,7 @@ import Layout from '../layouts/Layout.astro';
       const deploy = document.querySelector('input[name="deploy"]:checked').value;
       const git = document.querySelector('input[name="git"]').checked;
       
-      let command = 'curl https://spwnpt.dev/gen | python - ';
+      let command = 'curl https://gen.spwnpt.dev | python - ';
       
       // Add project type
       command += `--${projectType}`;
