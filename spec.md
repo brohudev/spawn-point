@@ -1,4 +1,4 @@
-**Project Name**: SPWNPT (Scaffold Projects With No Pain Tool)  
+**Project Name**: Spawn Point  
 **Version**: 1.0  
 **Target Users**: Hackathon participants needing instant, opinionated project setups  
 **Core Philosophy**: *"Your first git commit is code, not config"*
