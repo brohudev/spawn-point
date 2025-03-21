@@ -6,27 +6,28 @@ import Layout from '../layouts/Layout.astro';
   <!-- Prerequisites Modal -->
   <div id="prerequisites-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4">
     <!-- Modal backdrop with blur -->
-    <div class="absolute inset-0 bg-rosePine-base/80 backdrop-blur-sm"></div>
+    <div class="absolute inset-0 bg-rosePine-base/80 backdrop-blur-md transition-opacity duration-500"></div>
     
     <!-- Modal content -->
-    <div class="relative bg-rosePine-surface border border-rosePine-highlightMed rounded-lg shadow-lg w-full max-w-md p-6 z-10">
+    <div class="relative bg-rosePine-surface border border-rosePine-highlightMed rounded-lg shadow-lg w-full max-w-md p-6 z-10 transition-opacity duration-300">
       <h2 class="text-2xl font-bold text-rosePine-love mb-4">⚠️ Warning</h2>
       <p class="text-rosePine-text mb-4">
-        For Spawnpoint to work correctly, you need to have the following installed on your system:
+      For Spawnpoint to work correctly, you need to have the following installed on your system:
       </p>
       <ul class="list-disc pl-5 mb-6 text-rosePine-text">
-        <li class="mb-1">Python</li>
-        <li class="mb-1">pip (Python package manager)</li>
-        <li class="mb-1">npm (Node.js package manager)</li>
+      <li class="mb-1">Python</li>
+      <li class="mb-1">pip (Python package manager)</li>
+      <li class="mb-1">npm (Node.js package manager)</li>
       </ul>
       <p class="text-rosePine-muted mb-6 text-sm">
-        Without these dependencies, the command will fail to execute properly.
+      Without these dependencies, the command will fail to execute properly.
       </p>
       <button id="close-modal" class="w-full bg-rosePine-pine hover:bg-rosePine-rose text-rosePine-text py-2 px-4 rounded-md transition-colors">
-        I Understand
+      I Understand
       </button>
     </div>
-  </div>
+    </div>
+
 
   <section class="">
     <div class="max-w-4xl mx-auto text-center">
