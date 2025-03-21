@@ -20,7 +20,6 @@
   - [x] Create basic route structure
   - [x] Add error handling middleware
   - [x] Create requirements.txt
-  - [ ] Add Dockerfile for Render deployment
 
 ## 🛠️ Core Installer Implementation
 
