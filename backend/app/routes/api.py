@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from flask import Response
-from backend.app.utils.generate import generate_script
+from app.utils.generate import generate_script
 from app.utils.validators import validate_os, validate_project_type
 
 bp = Blueprint('api', __name__, url_prefix='')
@@ -14,13 +14,12 @@ def health_check():
         "service": "spawnpoint-api"
     })
 
-
-# OS-specific project type endpoints
+# the money shot
 @bp.route('/<os>/<project_type>', methods=['GET'])
 def generate_project(os, project_type):
      """Generate script for specific OS and project type."""
      
-     valid, error = validate_os(os) 
+     valid, error = validate_os(os) # validate platform and project type
      if not valid:
           return jsonify(error), 400
 
@@ -31,8 +30,8 @@ def generate_project(os, project_type):
      ci = request.args.get('ci', 'none')
      deploy = request.args.get('deploy', 'none')
      
-     try:
-         script_content = generate_script(os, project_type, ci, deploy)
+     try: # generate script
+         script_content = generate_script(os, project_type, ci, deploy) 
          return Response(script_content, mimetype='text/plain')
      except Exception as e:
           print("script generation error:",e)

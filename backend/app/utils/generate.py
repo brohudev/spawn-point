@@ -1,7 +1,21 @@
 import os
 
+#todo: fix the path to the fragments directory, and make the generate_script function cleaner
+def _load_fragment(fragments_dir, fragment_type, name):
+     """Load a fragment file if it exists, return empty string if not."""
+     fragment_path = os.path.join(fragments_dir, fragment_type, f"{name}.py")
+     try:
+          if os.path.exists(fragment_path):
+               with open(fragment_path, 'r') as f:
+                    return f.read()
+          return f"# {name} fragment not found\nprint(\"Fragment {name} not found\")\n"
+     except Exception as e:
+          print(f"Error loading fragment {name}: {str(e)}")
+          return f"# Error loading {name} fragment\nprint(\"Error loading fragment {name}\")\n"
+
 def generate_script(os_type, proj_type, ci_option, deploy_option):
      """Generate a Python script based on the provided parameters."""
+     
      # Map abbreviated OS to full name
      os_map = {
           'lin': 'linux',
@@ -21,7 +35,7 @@ def generate_script(os_type, proj_type, ci_option, deploy_option):
      script += "import os\nimport sys\nimport argparse\n\n"
      
      # Add OS verification fragment
-     script += load_fragment(frag_dir, 'os', f"{os_full}_check")
+     script += _load_fragment(frag_dir, 'os', f"{os_full}_check")
      
      # Start main function
      script += "\ndef main():\n"
@@ -34,20 +48,20 @@ def generate_script(os_type, proj_type, ci_option, deploy_option):
      
      # Add project setup fragment
      script += "    # Project setup\n"
-     project_setup = load_fragment(frag_dir, 'project', f"{proj_type}_setup")
-     script += project_setup.replace('\n', '\n    ')
+     project_setup = _load_fragment(frag_dir, 'project', f"{proj_type}_setup")
+     script += "    " + project_setup.replace('\n', '\n    ')
      
      # Add CI setup if needed
      if ci_option != 'none':
           script += "\n    # CI setup\n"
-          ci_setup = load_fragment(frag_dir, 'ci', f"{ci_option}_setup")
-          script += ci_setup.replace('\n', '\n    ')
+          ci_setup = _load_fragment(frag_dir, 'ci', f"{ci_option}_setup")
+          script += "    " + ci_setup.replace('\n', '\n    ')
      
      # Add deployment setup if needed
      if deploy_option != 'none':
           script += "\n    # Deployment setup\n"
-          deploy_setup = load_fragment(frag_dir, 'deploy', f"{deploy_option}_setup")
-          script += deploy_setup.replace('\n', '\n    ')
+          deploy_setup = _load_fragment(frag_dir, 'deploy', f"{deploy_option}_setup")
+          script += "    " + deploy_setup.replace('\n', '\n    ')
      
      script += "\n    print(\"Setup complete!\")\n\n"
      
@@ -60,18 +74,3 @@ def generate_script(os_type, proj_type, ci_option, deploy_option):
      script += "    main()\n"
      
      return script
-
-
-
-
-def load_fragment(fragments_dir, fragment_type, name):
-     """Load a fragment file if it exists, return empty string if not."""
-     fragment_path = os.path.join(fragments_dir, fragment_type, f"{name}.py")
-     try:
-          if os.path.exists(fragment_path):
-               with open(fragment_path, 'r') as f:
-                    return f.read()
-          return f"# {name} fragment not found\nprint(\"Fragment {name} not found\")\n"
-     except Exception as e:
-          print(f"Error loading fragment {name}: {str(e)}")
-          return f"# Error loading {name} fragment\nprint(\"Error loading fragment {name}\")\n"
