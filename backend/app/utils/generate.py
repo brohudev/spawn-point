@@ -1,6 +1,4 @@
 import os
-import sys
-import argparse
 
 def generate_script(os_type, proj_type, ci_option, deploy_option):
      """Generate a Python script based on the provided parameters."""

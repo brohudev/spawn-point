@@ -1,3 +1,6 @@
+import sys
+
+
 # Linux system verification
 def verify_linux():
     """Verify the current system is Linux."""

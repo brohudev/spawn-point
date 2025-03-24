@@ -1,8 +1,9 @@
 from flask import Blueprint, jsonify, request
 from flask import Response
-from fragments.generate import generate_script
+from backend.app.utils.generate import generate_script
+from app.utils.validators import validate_os, validate_project_type
 
-bp = Blueprint('api', __name__, url_prefix='/api')
+bp = Blueprint('api', __name__, url_prefix='')
 
 @bp.route('/health', methods=['GET'])
 def health_check():
@@ -16,22 +17,16 @@ def health_check():
 
 # OS-specific project type endpoints
 @bp.route('/<os>/<project_type>', methods=['GET'])
-def generate_os_project(os, project_type):
+def generate_project(os, project_type):
      """Generate script for specific OS and project type."""
-     # Validate OS
-     valid_os = ['lin', 'wind', 'mac']
-     if os not in valid_os:
-          return jsonify({
-               "error": "Invalid OS",
-               "message": f"OS must be one of: {', '.join(valid_os)}"
-          }), 400
+     
+     valid, error = validate_os(os) 
+     if not valid:
+          return jsonify(error), 400
 
-     valid_types = ['front', 'back', 'full']
-     if project_type not in valid_types:
-          return jsonify({
-               "error": "Invalid project type",
-               "message": f"Project type must be one of: {', '.join(valid_types)}"
-          }), 400
+     valid, error = validate_project_type(project_type)
+     if not valid:
+          return jsonify(error), 400
 
      ci = request.args.get('ci', 'none')
      deploy = request.args.get('deploy', 'none')
