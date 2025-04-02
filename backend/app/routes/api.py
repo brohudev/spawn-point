@@ -27,4 +27,5 @@ def generate_project(os, project_type):
      except Exception as e:
           print("script generation error:",e)
           
-          return f"print({{'error': 'Script generation failed', 'message': '{str(e).replace('\'', '\\\'')}'}})", 500
+          error_message = str(e).replace("'", "\\'")
+          return f"print({{'error': 'Script generation failed', 'message': '{error_message}'}})", 500
