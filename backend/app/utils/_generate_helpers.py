@@ -110,6 +110,41 @@ def _process_project_fragment(proj_type):
             
     return fragment_content, has_setup_func, setup_func_name, setup_fragment, fragment_path
 
+def _process_project_setup(proj_type, fragment_path, has_setup_func, setup_func_name):
+    """Process project setup section of the script."""
+    script_section = ""
+    
+    if os.path.exists(fragment_path) and has_setup_func:
+        script_section += f"\n    {setup_func_name}()\n"
+    else:
+        # Add the regular setup sections with proper indentation
+        project_setup = _generate_project_setup(proj_type)
+        script_section += project_setup.replace('\n', '\n    ')
+    
+    return script_section
+
+def _process_ci_setup(ci_option):
+    """Process CI setup section of the script."""
+    script_section = ""
+    
+    # Add CI setup if specified
+    ci_setup = _generate_ci_setup(ci_option)
+    if ci_setup:
+        script_section += ci_setup.replace('\n', '\n    ')
+    
+    return script_section
+
+def _process_deploy_setup(deploy_option):
+    """Process deployment setup section of the script."""
+    script_section = ""
+    
+    # Add deployment setup if specified
+    deploy_setup = _generate_deploy_setup(deploy_option)
+    if deploy_setup:
+        script_section += deploy_setup.replace('\n', '\n    ')
+    
+    return script_section
+
 def _generate_script_sections(os_full, proj_type, ci_option, deploy_option):
     """Generate all script sections after the main function."""
     fragment_content, has_setup_func, setup_func_name, setup_fragment, fragment_path = _process_project_fragment(proj_type)
@@ -118,21 +153,12 @@ def _generate_script_sections(os_full, proj_type, ci_option, deploy_option):
     script_sections = ""
     
     # Add project setup
-    if os.path.exists(fragment_path) and has_setup_func:
-        script_sections += f"\n    {setup_func_name}()\n"
-    else:
-        # Add the regular setup sections with proper indentation
-        project_setup = _generate_project_setup(proj_type)
-        script_sections += project_setup.replace('\n', '\n    ')
+    script_sections += _process_project_setup(proj_type, fragment_path, has_setup_func, setup_func_name)
     
-    # Add CI and deployment setup if specified
-    ci_setup = _generate_ci_setup(ci_option)
-    if ci_setup:
-        script_sections += ci_setup.replace('\n', '\n    ')
+    # Add CI setup
+    script_sections += _process_ci_setup(ci_option)
     
-    # Add deployment setup if specified
-    deploy_setup = _generate_deploy_setup(deploy_option)
-    if deploy_setup:
-        script_sections += deploy_setup.replace('\n', '\n    ')
+    # Add deployment setup
+    script_sections += _process_deploy_setup(deploy_option)
     
     return script_sections, fragment_content, fragment_path

@@ -1,68 +1,68 @@
 # SPWNPT Project Checklist
 
-## 🏗️ Project Setup
-
-- [x] Initialize project repository
-  - [x] Create directory structure (`frontend/` and `backend/` folders)
-  - [x] Setup initial README.md
-  - [x] Configure .gitignore files
-  - [x] Setup GitHub repository
-
-- [x] Frontend foundation
-  - [x] Initialize Astro project
-  - [x] Configure Tailwind CSS with Rose Pine theme
-  - [x] Create basic layout components
-  - [x] Setup TypeScript configuration
-
-- [x] Backend foundation
-  - [x] Setup Flask application
-  - [x] Configure CORS
-  - [x] Create basic route structure
-  - [x] Add error handling middleware
-  - [x] Create requirements.txt
-
 ## 🛠️ Core Installer Implementation
 
-- [ ] Create basic Python installer script
-  - [ ] Implement argument parsing for flags
-  - [ ] Setup logging functionality
-  - [ ] Create placeholder functions for main steps
-  - [ ] Implement help/usage display
+- [ ] make sure the basic script works
+- [ ] setup a testing suite for all the possible configurations
 
-- [ ] Implement OS detection & dependency management
-  - [ ] Platform detection logic (Windows, macOS, Linux)
-  - [ ] Dependency checks (Python, Node.js, package managers)
-  - [ ] OS-specific installation commands
-  - [ ] Retry logic and error handling
-  - [ ] Fallback mechanisms
+- [ ] add logging to the project
 
-## 🧩 Template System
+- [ ] make the frontend prettier
+  - [ ] add a donate button
+  - [ ] add another button to talk about privacy and transparency. this should probably be its own page. 
+  - [ ] refactor the astro code to be cleaner
 
-- [ ] Template system architecture
-  - [ ] Add Jinja2 to installer script
-  - [ ] Create structure for template files as strings
-  - [ ] Implement template loading and rendering
-  - [ ] Add context management for template variables
+- [ ] create docs on how to use the site.
+  - [ ] Create user documentation
+    - [ ] Installation guide
+    - [ ] Command reference
+    - [ ] Option explanations
+    - [ ] Troubleshooting guide
 
-- [ ] Frontend templates
-  - [ ] Next.js + TypeScript templates
-  - [ ] Tailwind CSS configuration with Rose Pine
-  - [ ] shadcn/ui setup template
-  - [ ] Component templates (Button, Card, Layout)
-  - [ ] Sample page with API connection
+  - [ ] Develop developer documentation
+    - [ ] Architecture overview
+    - [ ] Extension guide
+    - [ ] Contribution guidelines
 
-- [ ] Backend templates
-  - [ ] Flask application factory pattern
-  - [ ] SQLAlchemy ORM setup
-  - [ ] Database configuration templates
-  - [ ] API routes with CORS configuration
-  - [ ] Environment variable template
+  - [ ] Implement error code reference
+    - [ ] Create error code lookup system
+    - [ ] Add solutions for common errors
 
-- [ ] Configuration templates
-  - [ ] Git configuration (.gitignore)
-  - [ ] VS Code settings.json
-  - [ ] README.md templates
-  - [ ] GitHub issue/PR templates
+  - [ ] Add examples
+    - [ ] Common use cases
+    - [ ] Advanced configurations
+
+- [ ] make the project mature for release:
+  - [ ] Add analytics and monitoring
+    - [ ] Implement basic usage tracking
+    - [ ] Set up error reporting
+
+  - [ ] Prepare for launch
+    - [ ] Perform end-to-end testing
+    - [ ] Create release notes
+    - [ ] Tag version in repository
+    - [ ] Update documentation with final details
+
+- [ ] make sure these specific template systems exist
+  - [ ] Frontend templates
+    - [ ] Next.js + TypeScript templates
+    - [ ] Tailwind CSS configuration with Rose Pine
+    - [ ] shadcn/ui setup template
+    - [ ] Component templates (Button, Card, Layout)
+    - [ ] Sample page with API connection
+
+  - [ ] Backend templates
+    - [ ] Flask application factory pattern
+    - [ ] SQLAlchemy ORM setup
+    - [ ] Database configuration templates
+    - [ ] API routes with CORS configuration
+    - [ ] Environment variable template
+
+  - [ ] Configuration templates
+    - [ ] Git configuration (.gitignore)
+    - [ ] VS Code settings.json
+    - [ ] README.md templates
+    - [ ] GitHub issue/PR templates
 
 ## 🔄 Atomic Operation Framework
 
@@ -76,31 +76,6 @@
 - [ ] Add transaction-like behavior
 - [ ] Create helpers for common operation sequences
 
-## 🌐 Web Interface
-
-- [ ] Design landing page
-  - [ ] Create responsive layout with Rose Pine theme
-  - [ ] Add interactive elements and animations
-  - [ ] Implement features section
-  - [ ] Add footer with links
-
-- [ ] Create option selection components
-  - [ ] Checkbox components for project options
-  - [ ] Option groups (project type, CI/CD, deployment)
-  - [ ] Add state management for selected options
-  - [ ] Implement validation logic
-
-- [ ] Implement dynamic command generation
-  - [ ] Create command builder function
-  - [ ] Add live updating as options change
-  - [ ] Implement copy-to-clipboard functionality
-  - [ ] Add command validation
-
-- [ ] API endpoint integration
-  - [ ] Complete /api/gen endpoint with query parameters
-  - [ ] Implement script generation logic
-  - [ ] Add template selection based on user choices
-  - [ ] Implement caching for common configurations
 
 ## 🚀 CI/CD & Deployment
 
@@ -164,74 +139,7 @@
   - [ ] Implement test coverage reporting
   - [ ] Create regression test suite
 
-## 📚 Documentation
-
-- [ ] Create user documentation
-  - [ ] Installation guide
-  - [ ] Command reference
-  - [ ] Option explanations
-  - [ ] Troubleshooting guide
-
-- [ ] Develop developer documentation
-  - [ ] Architecture overview
-  - [ ] Extension guide
-  - [ ] Contribution guidelines
-
-- [ ] Implement error code reference
-  - [ ] Create error code lookup system
-  - [ ] Add solutions for common errors
-
-- [ ] Add examples
-  - [ ] Common use cases
-  - [ ] Advanced configurations
 
 ## 🔁 Integration & Release
 
-- [ ] Connect frontend and backend
-  - [ ] Configure API endpoints
-  - [ ] Setup proper CORS
-  - [ ] Add comprehensive error handling
 
-- [ ] Create unified deployment pipeline
-  - [ ] Frontend deployment to Cloudflare Pages
-  - [ ] Backend deployment to Render
-
-- [ ] Implement versioning strategy
-  - [ ] Version synchronization between components
-  - [ ] Add update checking mechanism
-
-- [ ] Add analytics and monitoring
-  - [ ] Implement basic usage tracking
-  - [ ] Set up error reporting
-
-- [ ] Prepare for launch
-  - [ ] Perform end-to-end testing
-  - [ ] Create release notes
-  - [ ] Tag version in repository
-  - [ ] Update documentation with final details
-
-## 📆 Milestone Tracking
-
-- [ ] Core Scaffolding (2 weeks)
-  - [ ] Front stack setup
-  - [ ] Back stack setup
-  - [ ] Full stack setup
-
-- [ ] CI Integration (1 week)
-  - [ ] GitHub Actions templates
-  - [ ] GitLab CI templates
-
-- [ ] Deployment Targets (1.5 weeks)
-  - [ ] Vercel integration
-  - [ ] Heroku integration
-  - [ ] AWS integration
-  - [ ] Cloudflare integration
-
-- [ ] Error Recovery System (3 days)
-  - [ ] Rollback mechanism
-  - [ ] Partial failure handling
-
-- [ ] Cross-Platform Testing (4 days)
-  - [ ] Windows verification
-  - [ ] macOS verification
-  - [ ] Linux verification

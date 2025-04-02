@@ -3,9 +3,6 @@ from ._generate_helpers import (
     _generate_header,
     _generate_imports,
     _generate_os_verification,
-    _generate_project_setup,
-    _generate_ci_setup,
-    _generate_deploy_setup,
     _generate_main_function,
     _generate_entrypoint,
     _generate_script_sections
