@@ -1,0 +1,76 @@
+---
+---
+
+<div class="grid grid-cols-1 md:grid-cols-4 mt-4 gap-6">
+  <div>
+    <h3 class="text-xl font-semibold mb-3 text-rosePine-foam">Project Type</h3>
+    <div class="space-y-2">
+      <label class="flex items-center space-x-2 cursor-pointer option-label">
+        <input type="radio" name="project-type" value="front" class="accent-rosePine-gold" checked>
+        <span class="text-rosePine-text">Frontend (Next.js)</span>
+      </label>
+      <label class="flex items-center space-x-2 cursor-pointer option-label">
+        <input type="radio" name="project-type" value="back" class="accent-rosePine-gold">
+        <span class="text-rosePine-text">Backend (Flask)</span>
+      </label>
+      <label class="flex items-center space-x-2 cursor-pointer option-label">
+        <input type="radio" name="project-type" value="fullstack" class="accent-rosePine-gold">
+        <span class="text-rosePine-text">Fullstack (Next.js + Flask)</span>
+      </label>
+    </div>
+  </div>
+  
+  <div>
+    <h3 class="text-xl font-semibold mb-3 text-rosePine-foam">CI/CD Options</h3>
+    <div class="space-y-2">
+      <label class="flex items-center space-x-2 cursor-pointer option-label">
+        <input type="radio" name="ci" value="none" class="accent-rosePine-gold" checked>
+        <span class="text-rosePine-text">None</span>
+      </label>
+      <label class="flex items-center space-x-2 cursor-pointer option-label">
+        <input type="radio" name="ci" value="github" class="accent-rosePine-gold">
+        <span class="text-rosePine-text">GitHub Actions</span>
+      </label>
+      <label class="flex items-center space-x-2 cursor-pointer option-label">
+        <input type="radio" name="ci" value="gitlab" class="accent-rosePine-gold">
+        <span class="text-rosePine-text">GitLab CI</span>
+      </label>
+    </div>
+  </div>
+  
+  <div>
+    <h3 class="text-xl font-semibold mb-3 text-rosePine-foam">Deployment Target</h3>
+    <div class="space-y-2">
+      <label class="flex items-center space-x-2 cursor-pointer option-label">
+        <input type="radio" name="deploy" value="none" class="accent-rosePine-gold">
+        <span class="text-rosePine-text">None</span>
+      </label>
+      <label class="flex items-center space-x-2 cursor-pointer option-label">
+        <input type="radio" name="deploy" value="vercel" class="accent-rosePine-gold" checked>
+        <span class="text-rosePine-text">Vercel</span>
+      </label>
+      <label class="flex items-center space-x-2 cursor-pointer option-label">
+        <input type="radio" name="deploy" value="heroku" class="accent-rosePine-gold">
+        <span class="text-rosePine-text">Heroku</span>
+      </label>
+      <label class="flex items-center space-x-2 cursor-pointer option-label">
+        <input type="radio" name="deploy" value="aws" class="accent-rosePine-gold">
+        <span class="text-rosePine-text">AWS</span>
+      </label>
+      <label class="flex items-center space-x-2 cursor-pointer option-label">
+        <input type="radio" name="deploy" value="cloudflare" class="accent-rosePine-gold">
+        <span class="text-rosePine-text">Cloudflare</span>
+      </label>
+    </div>
+  </div>
+  
+  <div>
+    <h3 class="text-xl font-semibold mb-3 text-rosePine-foam">Additional Options</h3>
+    <div class="space-y-2">
+      <label class="flex items-center space-x-2 cursor-pointer option-label">
+        <input type="checkbox" name="git" value="true" class="accent-rosePine-gold">
+        <span class="text-rosePine-text">Don't Initialize Git</span>
+      </label>
+    </div>
+  </div>
+</div>

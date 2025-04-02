@@ -1,23 +1,84 @@
 ---
 ---
 
-<div class="bg-rosePine-surface p-6 rounded-lg shadow-md border border-rosePine-highlightLow">
-  <h2 class="text-xl font-bold mb-4 text-rosePine-foam">Command Generator</h2>
-  
-  <div class="space-y-4">
-    <div class="bg-rosePine-overlay p-4 rounded border border-rosePine-highlightMed">
-      <p class="font-mono text-rosePine-muted">
-        # Command generator will be implemented here
-      </p>
-      <p class="font-mono text-rosePine-text mt-2">
-        $ spawnpoint init my-awesome-project
-      </p>
-    </div>
-    
-    <div class="flex justify-end">
-      <button class="bg-rosePine-pine hover:bg-rosePine-iris text-rosePine-text px-4 py-2 rounded transition-colors font-medium">
-        Generate Command
-      </button>
-    </div>
+
+<div class="mb-4 w-fit rounded-md flex flex-col items-center">
+  <p class="text-rosePine-muted text-sm mb-4">
+    Run this command in your terminal to set up your project instantly.
+  </p>
+  <div class="bg-rosePine-overlay p-2 rounded-md text-rosePine-subtle font-mono font-bold text-lg mb-4 overflow-x-auto whitespace-nowrap w-[90vw] md:w-auto" id="command-output">
+    curl https://gen.spwnpt.dev | python -
   </div>
+  <button id="copy-button" class="bg-rosePine-pine hover:bg-rosePine-test hover:text-rosePine-base text-rosePine-text my-2 px-4 py-2 rounded-md font-medium transition-colors w-80">
+    Copy to Clipboard
+  </button>
 </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Command generator logic
+    function updateCommand() {
+      const projectType = document.querySelector('input[name="project-type"]:checked') as HTMLInputElement;
+      const ci = document.querySelector('input[name="ci"]:checked') as HTMLInputElement;
+      const deploy = document.querySelector('input[name="deploy"]:checked') as HTMLInputElement;
+      const git = document.querySelector('input[name="git"]') as HTMLInputElement;
+      
+      let command = 'curl https://gen.spwnpt.dev | python - ';
+      
+      // Add project type
+      if (projectType) {
+        command += `--${projectType.value}`;
+      }
+      
+      // Add CI/CD option if not none
+      if (ci && ci.value !== 'none') {
+        command += ` --ci ${ci.value}`;
+      }
+      
+      // Add deployment target if not none
+      if (deploy && deploy.value !== 'none') {
+        command += ` --deploy ${deploy.value}`;
+      }
+      
+      // Add no-git flag if git is checked
+      if (git && git.checked) {
+        command += ' --no-git';
+      }
+      
+      const commandOutput = document.getElementById('command-output');
+      if (commandOutput) {
+        commandOutput.textContent = command;
+      }
+    }
+    
+    // Add event listeners to all inputs that affect the command
+    document.querySelectorAll('input[name="project-type"], input[name="ci"], input[name="deploy"], input[name="git"]').forEach(input => {
+      input.addEventListener('change', updateCommand);
+    });
+    
+    // Copy to clipboard functionality
+    const copyButton = document.getElementById('copy-button');
+    if (copyButton) {
+      copyButton.addEventListener('click', () => {
+        const command = document.getElementById('command-output')?.textContent || '';
+        navigator.clipboard.writeText(command)
+          .then(() => {
+            const button = document.getElementById('copy-button');
+            const originalText = button?.textContent || 'Copy to Clipboard';
+            if (button) {
+              button.textContent = 'Copied!';
+              setTimeout(() => {
+                button.textContent = originalText;
+              }, 2000);
+            }
+          })
+          .catch(err => {
+            console.error('Failed to copy: ', err);
+          });
+      });
+    }
+    
+    // Initial command update
+    updateCommand();
+  });
+</script>
