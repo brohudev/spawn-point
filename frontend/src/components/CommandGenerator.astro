@@ -7,7 +7,7 @@
     Run this command in your terminal to set up your project instantly.
   </p>
   <div class="bg-rosePine-overlay p-2 rounded-md text-rosePine-subtle font-mono font-bold text-lg mb-4 overflow-x-auto whitespace-nowrap w-[90vw] md:w-auto" id="command-output">
-    curl https://gen.spwnpt.dev | python -
+    curl -fsSL "gen.spwnpt.dev/lin/front" | python
   </div>
   <button id="copy-button" class="bg-rosePine-pine hover:bg-rosePine-test hover:text-rosePine-base text-rosePine-text my-2 px-4 py-2 rounded-md font-medium transition-colors w-80">
     Copy to Clipboard
@@ -18,32 +18,39 @@
   document.addEventListener('DOMContentLoaded', () => {
     // Command generator logic
     function updateCommand() {
-      const projectType = document.querySelector('input[name="project-type"]:checked') as HTMLInputElement;
+      const os = document.querySelector('input[name="os"]:checked') as HTMLInputElement || { value: 'lin' };
+      const stack = document.querySelector('input[name="project-type"]:checked') as HTMLInputElement || { value: 'front' };
       const ci = document.querySelector('input[name="ci"]:checked') as HTMLInputElement;
       const deploy = document.querySelector('input[name="deploy"]:checked') as HTMLInputElement;
       const git = document.querySelector('input[name="git"]') as HTMLInputElement;
       
-      let command = 'curl https://gen.spwnpt.dev | python - ';
+      // Build the base URL
+      let url = `gen.spwnpt.dev/${os.value}/${stack.value}`;
       
-      // Add project type
-      if (projectType) {
-        command += `--${projectType.value}`;
-      }
+      // Add query parameters if needed
+      const queryParams = [];
       
       // Add CI/CD option if not none
       if (ci && ci.value !== 'none') {
-        command += ` --ci ${ci.value}`;
+        queryParams.push(`ci=${ci.value}`);
       }
       
       // Add deployment target if not none
       if (deploy && deploy.value !== 'none') {
-        command += ` --deploy ${deploy.value}`;
+        queryParams.push(`deploy=${deploy.value}`);
       }
       
       // Add no-git flag if git is checked
       if (git && git.checked) {
-        command += ' --no-git';
+        queryParams.push('nogit=True');
       }
+      
+      // Add query parameters to URL if there are any
+      if (queryParams.length > 0) {
+        url += '?' + queryParams.join('&');
+      }
+      
+      const command = `curl -fsSL "${url}" | python`;
       
       const commandOutput = document.getElementById('command-output');
       if (commandOutput) {

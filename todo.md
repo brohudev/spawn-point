@@ -40,7 +40,7 @@
 - [ ] make the frontend prettier
   - [ ] add a donate button
   - [ ] add another button to talk about privacy and transparency. this should probably be its own page. 
-  - [-] refactor the astro code to be cleaner
+  - [x] refactor the astro code to be cleaner
 
 - [ ] create docs on how to use the site.
   - [ ] Create user documentation
