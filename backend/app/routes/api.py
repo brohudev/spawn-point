@@ -21,11 +21,11 @@ def generate_project(os, project_type):
      
      valid, error = validate_os(os) # validate platform and project type
      if not valid:
-          return jsonify(error), 400
+          return error, 400
 
      valid, error = validate_project_type(project_type)
      if not valid:
-          return jsonify(error), 400
+          return error, 400
 
      ci = request.args.get('ci', 'none')
      deploy = request.args.get('deploy', 'none')
@@ -36,7 +36,4 @@ def generate_project(os, project_type):
      except Exception as e:
           print("script generation error:",e)
           
-          return jsonify({
-             "error": "Script generation failed",
-             "message": str(e)
-          }), 500
+          return f"print({{'error': 'Script generation failed', 'message': '{str(e).replace('\'', '\\\'')}'}})", 500

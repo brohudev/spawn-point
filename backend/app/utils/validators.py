@@ -24,10 +24,7 @@ def validate_project_type(project_type):
     Returns:
         tuple: (is_valid, error_response)
     """
-    valid_types = ['front', 'back', 'full']
+    valid_types = ['front', 'back', 'full', "micro"]
     if project_type not in valid_types:
-        return False, {
-            "error": "Invalid project type",
-            "message": f"Project type must be one of: {', '.join(valid_types)}"
-        }
+        return False, f"print(\"error: Invalid project type. Valid types are: {', '.join(valid_types)}\")"
     return True, None
