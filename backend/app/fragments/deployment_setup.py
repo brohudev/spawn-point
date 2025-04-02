@@ -1,6 +1,4 @@
-import os
-
-def setup_deployment():
+def setup_deployment(deploy_target):
     print("Setting up deployment configurations...")
     print("Creating environment-specific settings...")
     print("Configuring cloud provider settings...")

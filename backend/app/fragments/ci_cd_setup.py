@@ -1,6 +1,4 @@
-import os
-
-def setup_ci_cd():
+def setup_ci_cd(ci_cd_target):
     print("Setting up CI/CD pipeline...")
     print("Creating workflow configurations...")
     print("Setting up testing frameworks...")

@@ -1,8 +1,5 @@
-import sys
-
-
-def verify_platform(expected_platform):
-    if sys.platform != expected_platform:
-        print(f"Warning: This script was generated for {expected_platform} but is being run on {sys.platform}.")
-        return False
-    return True
+def verify_platform(os):
+    valid_os = ['lin', 'wind', 'mac']
+    if os not in valid_os:
+        return False, f"print(\"error: Invalid OS. Please make sure your {os} is one of: {', '.join(valid_os)}\")"
+    return True, None

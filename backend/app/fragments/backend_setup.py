@@ -1,6 +1,6 @@
 import os
 
-def setup_back():
+def setup_backend(os_type):
     print("Setting up backend project...")
     print("Installing backend dependencies...")
     print("Creating Flask project structure...")

@@ -1,6 +1,6 @@
 import os
 
-def setup_full_stack():
+def setup_fullstack(os_type):
     print("Setting up full stack project...")
     print("Installing frontend and backend dependencies...")
     print("Creating project structure for both frontend and backend...")

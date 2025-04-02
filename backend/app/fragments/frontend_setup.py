@@ -1,4 +1,4 @@
-def setup_front():
+def setup_frontend(os_type):
     print("Setting up frontend project...")
     print("Installing frontend dependencies...")
     print("Creating project structure...")
